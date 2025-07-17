@@ -10,6 +10,7 @@ import { HelpCircle } from "lucide-react"
 import { initiateOAuth } from "@/lib/auth-actions"
 import { useSearchParams } from "next/navigation"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import Image from "next/image" // Import Image component
 
 function TelekomLoginForm() {
   const [username, setUsername] = useState("")
@@ -139,16 +140,30 @@ function TelekomLoginForm() {
 
 export default function TelekomLogin() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      {/* Background Image */}
+      <Image
+        alt="Telekom Login Background"
+        src="/background.jpeg"
+        quality={100}
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          zIndex: -1, // Ensure it stays in the background
+        }}
+        priority // Load background image eagerly
+      />
+
       {/* Telekom Logo */}
-      <div className="absolute top-8 left-8">
+      <div className="absolute top-8 left-8 z-10">
         <div className="w-16 h-16 bg-[#E20074] rounded flex items-center justify-center">
           <span className="text-white text-2xl font-bold">T</span>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-4">
+      <div className="flex-1 flex items-center justify-center px-4 z-10">
         <Suspense
           fallback={
             <div className="bg-white rounded-2xl p-8 w-full max-w-md shadow-lg">
@@ -163,7 +178,7 @@ export default function TelekomLogin() {
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center px-8 py-6 text-white text-sm">
+      <div className="flex justify-between items-center px-8 py-6 text-white text-sm z-10">
         <div>
           <div>© Telekom Deutschland GmbH</div>
           <div>26.24.0</div>
