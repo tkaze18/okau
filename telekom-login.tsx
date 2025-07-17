@@ -157,9 +157,13 @@ export default function TelekomLogin() {
 
       {/* Telekom Logo */}
       <div className="absolute top-8 left-8 z-10">
-        <div className="w-16 h-16 bg-[#E20074] rounded flex items-center justify-center">
-          <span className="text-white text-2xl font-bold">T</span>
-        </div>
+        <Image
+          src="/telekom-logo-full.svg"
+          alt="Telekom Logo"
+          width={60} // SVG viewBox is 60x60
+          height={60} // SVG viewBox is 60x60
+          priority
+        />
       </div>
 
       {/* Main Content */}
